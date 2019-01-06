@@ -1,0 +1,27 @@
+;; The usual recursive definition of fibonacci
+(define fib [n]
+  (if (<= n 1)
+    n
+    (+ (fib (- n 1)) 
+       (fib (- n 2)))))
+
+;; An iterative version of fibonacci
+(define iter-fib [n]
+  (define go-fib [x n m]
+    (if (= x 0)
+      n
+      (go-fib (- x 1) m (+ n m))))
+
+  (go-fib n 0 1))
+
+
+(display "(fib 5) =>" (fib 5))
+(display "(fib 20) =>" (fib 20))
+(display "(iter-fib 5) =>" (iter-fib 5))
+(display "(iter-fib 40) =>" (iter-fib 40))
+
+;; =expect=
+;; (fib 5) => 5
+;; (fib 20) => 6765
+;; (iter-fib 5) => 5
+;; (iter-fib 40) => 102334155
